@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Front Page</title>
+    
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background-color: bisque;
+            background-image: url('images/pawel-czerwinski-M40QnK-PXkI-unsplash.jpg');  
+            background-size: cover;
+            background-position: center;
+            color: #423d38;
+            text-align: center;           
+        }
+        
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #35312d;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            justify-content: center;
+            margin: -8px;
+        }
+        
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        
+        .navbar ul li {
+            display: inline;
+            padding-left: 25px;
+            padding-right: 25px;           
+        }
+        
+        .navbar ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+        }
+        
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+        }
+        
+        @media (max-width: 768px) {
+            .navbar ul {
+                display: none;
+                flex-direction: column;
+                background: #35312d;
+                position: absolute;
+                top: 50px;
+                width: 100%;
+                left: 0;
+                text-align: center;
+                padding: 10px;
+            }
+        
+            .navbar ul.show {
+                display: flex;
+            }
+        
+            .menu-toggle {
+                display: block;
+            }
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 10%;
+        }
+        
+        .hero img {
+            padding-top: 20px;
+            width: 250px;
+        }
+        
+        .scroll-button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 18px;
+            background: #ff6600;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+            text-decoration: none;
+            margin-top: 20px;
+        }
+        
+        /* Video */
+        .video-container {
+            max-width: 800px;
+            margin: 25px auto;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        
+        video {
+            width: 100%;
+            height: auto;
+        }
+        
+        /* Books Sections */
+        .content {
+            padding: 20px;
+            background-color: rgba(53, 49, 45, 0.85);
+            color: rgb(255, 255, 255);
+            width: 85%;
+            margin: auto;
+            border-radius: 20px;
+        }
+        
+        .book-section {
+            margin: 20px 0;
+        }
+        
+        .book-section h2 {
+            font-weight: 12;
+        }
+        
+        .books-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: nowrap; 
+            gap: 5px; 
+        }
+        
+        .books-container img {
+            width: calc(100% / 6 - 5px); 
+            height: auto;
+            max-width: 100%;
+            object-fit: cover; 
+        }
+        
+        @media (max-width: 1024px) { 
+            .books-container {
+                flex-wrap: wrap; 
+                border-radius: 50px;
+            }
+            .books-container img {
+                width: calc(100% / 3 - 5px); 
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .books-container img {
+                width: calc(100% / 2 - 5px); 
+            }
+        }
+        
+        /* New CSS for hover overlay effect */
+        .book-item {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .book-item img {
+            display: block;
+            width: 100%;
+        }
+        
+        .book-item .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: opacity 0.3s ease;
+        }
+        
+        .book-item:hover .overlay {
+            opacity: 1;
+        }
+        
+        .book-item .overlay button {
+            padding: 10px 20px;
+            background: #ff6600;
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        /* Footer */
+        footer {
+            background: #35312d;
+            color: white;
+            padding: 20px;
+            margin-top: 20px;
+            margin: -8px;
+        }
+        
+        .social-icons img {
+            width: 30px;
+            margin: 5px;
+        }
+        
+        .FeaturedBooks, .ClassicBooks, .MostPopularSeries, .NewArrivals {
+            padding-top: 15px;
+        }
+    </style>
+    
+    <script>
+        function toggleMenu() {
+            document.querySelector(".navbar ul").classList.toggle("show");
+        }
+    
+        function addToCart(bookName, bookImage, bookPrice) {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            cart.push({ name: bookName, image: bookImage, price: bookPrice });
+            localStorage.setItem("cart", JSON.stringify(cart));
+            updateCartCount();
+            alert(bookName + " added to cart!");
+        }
+    
+        function updateCartCount() {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            document.getElementById("cart-count").innerText = cart.length;
+        }
+    
+        document.addEventListener("DOMContentLoaded", updateCartCount);
+    </script>
+    
+
+
+
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+            <ul>
+                <li><a href="Front Page 2.html">Home</a></li>
+                <li><a href="Books Page.html">Books</a></li>
+                <li><a href="19th Century Books Page.html">19th Century Books</a></li>
+                <li><a href="Cart Page.html">Cart (<span id="cart-count">0</span>)</a></li>
+                <li><a href="Contact Us Page.html">Contact Us</a></li>
+                <li><a href="About us.html">About Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <section class="hero">
+        <img src="images/LOGO.png" alt="Logo">
+        <h1>Welcome to Emblemy Collectible Books</h1>
+        <p>Discover rare, classic fiction books.</p>
+        <a href="#content" class="scroll-button">Explore Now</a>
+    </section>
+    
+    <div class="video-container">
+        <video controls poster="images/video-poster.jpg">
+            <source src="images/invideo-ai-720 Discover Timeless Treasures with T_Emble 2025-02-04.mp4" type="video/mp4">
+            <track kind="captions" src="videos/captions.vtt" srclang="en" label="English">
+            Your browser does not support HTML5 video.
+        </video>
+        <p class="video-caption">Discover our rare book collection (2:15)</p>
+    </div>
+    
+    <section id="content" class="content">
+        <!-- Featured Books Section -->
+        <div class="book-section">
+            <h2 class="FeaturedBooks">Featured Books</h2>
+            <div class="books-container">
+                <div class="book-item">
+                    <a href="book-detail.html">
+                        <img src="images/large_347811d37fb5f95bba97a909522c0aeb.jpg" alt="Book 1">
+                    </a>
+                    <div class="overlay">
+                        <button onclick="event.stopPropagation(); window.location.href='book-detail.html';">View Details</button>
+                        <button onclick="event.stopPropagation(); addToCart('Book 1', 'images/large_347811d37fb5f95bba97a909522c0aeb.jpg', '29.99')">Add to Cart - £29.99</button>
+                    </div>
+                </div>
+                <div class="book-item">
+                    <a href="book-detail.html">
+                        <img src="images/large_52f64c105935c75881ac2b956098df12.jpg" alt="Book 2">
+                    </a>
+                    <div class="overlay">
+                        <button onclick="event.stopPropagation(); window.location.href='book-detail.html';">View Details</button>
+                        <button onclick="event.stopPropagation(); addToCart('Book 2', 'images/large_52f64c105935c75881ac2b956098df12.jpg', '19.99')">Add to Cart - £19.99</button>
+                    </div>
+                </div>
+                <div class="book-item">
+                    <a href="book-detail.html">
+                        <img src="images/large_79da5edd93b39e9a59fccbabd1f21032.jpg" alt="Book 3">
+                    </a>
+                    <div class="overlay">
+                        <button onclick="event.stopPropagation(); window.location.href='book-detail.html';">View Details</button>
+                        <button onclick="event.stopPropagation(); addToCart('Book 3', 'images/large_79da5edd93b39e9a59fccbabd1f21032.jpg', '24.99')">Add to Cart - £24.99</button>
+                    </div>
+                </div>
+                <div class="book-item">
+                    <a href="book-detail.html">
+                        <img src="images/large_9db60ded15222b1c9179a65a5c988132.jpg" alt="Book 4">
+                    </a>
+                    <div class="overlay">
+                        <button onclick="event.stopPropagation(); window.location.href='book-detail.html';">View Details</button>
+                        <button onclick="event.stopPropagation(); addToCart('Book 4', 'images/large_9db60ded15222b1c9179a65a5c988132.jpg', '34.99')">Add to Cart - £34.99</button>
+                    </div>
+                </div>
+                <div class="book-item">
+                    <a href="book-detail.html">
+                        <img src="images/large_c007b20dcb02f2fb464f82169a34f6a9.jpg" alt="Book 5">
+                    </a>
+                    <div class="overlay">
+                        <button onclick="event.stopPropagation(); window.location.href='book-detail.html';">View Details</button>
+                        <button onclick="event.stopPropagation(); addToCart('Book 5', 'images/large_c007b20dcb02f2fb464f82169a34f6a9.jpg', '14.99')">Add to Cart - £14.99</button>
+                    </div>
+                </div>
+                <div class="book-item">
+                    <a href="book-detail.html">
+                        <img src="images/large_65b0ae90317f7596d6f95bfdd6131398.jpg" alt="Book 6">
+                    </a>
+                    <div class="overlay">
+                        <button onclick="event.stopPropagation(); window.location.href='book-detail.html';">View Details</button>
+                        <button onclick="event.stopPropagation(); addToCart('Book 6', 'images/large_65b0ae90317f7596d6f95bfdd6131398.jpg', '39.99')">Add to Cart - £39.99</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Classic Books Section -->
+        <div class="book-section">
+            <h2 class="ClassicBooks">Classic Books</h2>
+            <div class="books-container">
+                <div class="book-item">
+                    <a href="book-detail.html">
+                        <img src="images/large_347811d37fb5f95bba97a909522c0aeb.jpg" alt="Book 7">
+                    </a>
+                    <div class="overlay">
+                        <button onclick="event.stopPropagation(); window.location.href='book-detail.html';">View Details</button>
+                        <button onclick="event.stopPropagation(); addToCart('Book 7', 'images/large_347811d37fb5f95bba97a909522c0aeb.jpg', '29.99')">Add to Cart - £29.99</button>
+                    </div>
+                </div>
+                <div class="book-item">
+                    <a href="book-detail.html">
+                        <img src="images/large_52f64c105935c75881ac2b956098df12.jpg" alt="Book 8">
+                    </a>
+                    <div class="overlay">
+                        <button onclick="event.stopPropagation(); window.location.href='book-detail.html';">View Details</button>
+                        <button onclick="event.stopPropagation(); addToCart('Book 8', 'images/large_52f64c105935c75881ac2b956098df12.jpg', '19.99')">Add to Cart - £19.99</button>
+                    </div>
+                </div>
+                <div class="book-item">
+                    <a href="book-detail.html">
+                        <img src="images/large_79da5edd93b39e9a59fccbabd1f21032.jpg" alt="Book 9">
+                    </a>
+                    <div class="overlay">
+                        <button onclick="event.stopPropagation(); window.location.href='book-detail.html';">View Details</button>
+                        <button onclick="event.stopPropagation(); addToCart('Book 9', 'images/large_79da5edd93b39e9a59fccbabd1f21032.jpg', '24.99')">Add to Cart - £24.99</button>
+                    </div>
+                </div>
+                <div class="book-item">
+                    <a href="book-detail.html">
+                        <img src="images/large_9db60ded15222b1c9179a65a5c988132.jpg" alt="Book 10">
+                    </a>
+                    <div class="overlay">
+                        <button onclick="event.stopPropagation(); window.location.href='book-detail.html';">View Details</button>
+                        <button onclick="event.stopPropagation(); addToCart('Book 10', 'images/large_9db60ded15222b1c9179a65a5c988132.jpg', '34.99')">Add to Cart - £34.99</button>
+                    </div>
+                </div>
+                <div class="book-item">
+                    <a href="book-detail.html">
+                        <img src="images/large_c007b20dcb02f2fb464f82169a34f6a9.jpg" alt="Book 11">
+                    </a>
+                    <div class="overlay">
+                        <button onclick="event.stopPropagation(); window.location.href='book-detail.html';">View Details</button>
+                        <button onclick="event.stopPropagation(); addToCart('Book 11', 'images/large_c007b20dcb02f2fb464f82169a34f6a9.jpg', '14.99')">Add to Cart - £14.99</button>
+                    </div>
+                </div>
+                <div class="book-item">
+                    <a href="book-detail.html">
+                        <img src="images/large_65b0ae90317f7596d6f95bfdd6131398.jpg" alt="Book 12">
+                    </a>
+                    <div class="overlay">
+                        <button onclick="event.stopPropagation(); window.location.href='book-detail.html';">View Details</button>
+                        <button onclick="event.stopPropagation(); addToCart('Book 12', 'images/large_65b0ae90317f7596d6f95bfdd6131398.jpg', '39.99')">Add to Cart - £39.99</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Most Popular Series Section -->
+        <div class="book-section">
+            <h2 class="MostPopularSeries">Most Popular Series</h2>
+            <div class="books-container">
+                <div class="book-item">
+                    <a href="book-detail.html">
+                        <img src="images/large_347811d37fb5f95bba97a909522c0aeb.jpg" alt="Book 13">
+                    </a>
+                    <div class="overlay">
+                        <button onclick="event.stopPropagation(); window.location.href='book-detail.html';">View Details</button>
+                        <button onclick="event.stopPropagation(); addToCart('Book 13', 'images/large_347811d37fb5f95bba97a909522c0aeb.jpg', '29.99')">Add to Cart - £29.99</button>
+                    </div>
+                </div>
+                <div class="book-item">
+                    <a href="book-detail.html">
+                        <img src="images/large_52f64c105935c75881ac2b956098df12.jpg" alt="Book 14">
+                    </a>
+                    <div class="overlay">
+                        <button onclick="event.stopPropagation(); window.location.href='book-detail.html';">View Details</button>
+                        <button onclick="event.stopPropagation(); addToCart('Book 14', 'images/large_52f64c105935c75881ac2b956098df12.jpg', '19.99')">Add to Cart - £19.99</button>
+                    </div>
+                </div>
+                <div class="book-item">
+                    <a href="book-detail.html">
+                        <img src="images/large_79da5edd93b39e9a59fccbabd1f21032.jpg" alt="Book 15">
+                    </a>
+                    <div class="overlay">
+                        <button onclick="event.stopPropagation(); window.location.href='book-detail.html';">View Details</button>
+                        <button onclick="event.stopPropagation(); addToCart('Book 15', 'images/large_79da5edd93b39e9a59fccbabd1f21032.jpg', '24.99')">Add to Cart - £24.99</button>
+                    </div>
+                </div>
+                <div class="book-item">
+                    <a href="book-detail.html">
+                        <img src="images/large_9db60ded15222b1c9179a65a5c988132.jpg" alt="Book 16">
+                    </a>
+                    <div class="overlay">
+                        <button onclick="event.stopPropagation(); window.location.href='book-detail.html';">View Details</button>
+                        <button onclick="event.stopPropagation(); addToCart('Book 16', 'images/large_9db60ded15222b1c9179a65a5c988132.jpg', '34.99')">Add to Cart - £34.99</button>
+                    </div>
+                </div>
+                <div class="book-item">
+                    <a href="book-detail.html">
+                        <img src="images/large_c007b20dcb02f2fb464f82169a34f6a9.jpg" alt="Book 17">
+                    </a>
+                    <div class="overlay">
+                        <button onclick="event.stopPropagation(); window.location.href='book-detail.html';">View Details</button>
+                        <button onclick="event.stopPropagation(); addToCart('Book 17', 'images/large_c007b20dcb02f2fb464f82169a34f6a9.jpg', '14.99')">Add to Cart - £14.99</button>
+                    </div>
+                </div>
+                <div class="book-item">
+                    <a href="book-detail.html">
+                        <img src="images/large_65b0ae90317f7596d6f95bfdd6131398.jpg" alt="Book 18">
+                    </a>
+                    <div class="overlay">
+                        <button onclick="event.stopPropagation(); window.location.href='book-detail.html';">View Details</button>
+                        <button onclick="event.stopPropagation(); addToCart('Book 18', 'images/large_65b0ae90317f7596d6f95bfdd6131398.jpg', '39.99')">Add to Cart - £39.99</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- New Arrivals Section -->
+        <div class="book-section">
+            <h2 class="NewArrivals">New Arrivals</h2>
+            <div class="books-container">
+                <div class="book-item">
+                    <a href="book-detail.html">
+                        <img src="images/large_347811d37fb5f95bba97a909522c0aeb.jpg" alt="Book 19">
+                    </a>
+                    <div class="overlay">
+                        <button onclick="event.stopPropagation(); window.location.href='book-detail.html';">View Details</button>
+                        <button onclick="event.stopPropagation(); addToCart('Book 19', 'images/large_347811d37fb5f95bba97a909522c0aeb.jpg', '29.99')">Add to Cart - £29.99</button>
+                    </div>
+                </div>
+                <div class="book-item">
+                    <a href="book-detail.html">
+                        <img src="images/large_52f64c105935c75881ac2b956098df12.jpg" alt="Book 20">
+                    </a>
+                    <div class="overlay">
+                        <button onclick="event.stopPropagation(); window.location.href='book-detail.html';">View Details</button>
+                        <button onclick="event.stopPropagation(); addToCart('Book 20', 'images/large_52f64c105935c75881ac2b956098df12.jpg', '19.99')">Add to Cart - £19.99</button>
+                    </div>
+                </div>
+                <div class="book-item">
+                    <a href="book-detail.html">
+                        <img src="images/large_79da5edd93b39e9a59fccbabd1f21032.jpg" alt="Book 21">
+                    </a>
+                    <div class="overlay">
+                        <button onclick="event.stopPropagation(); window.location.href='book-detail.html';">View Details</button>
+                        <button onclick="event.stopPropagation(); addToCart('Book 21', 'images/large_79da5edd93b39e9a59fccbabd1f21032.jpg', '24.99')">Add to Cart - £24.99</button>
+                    </div>
+                </div>
+                <div class="book-item">
+                    <a href="book-detail.html">
+                        <img src="images/large_9db60ded15222b1c9179a65a5c988132.jpg" alt="Book 22">
+                    </a>
+                    <div class="overlay">
+                        <button onclick="event.stopPropagation(); window.location.href='book-detail.html';">View Details</button>
+                        <button onclick="event.stopPropagation(); addToCart('Book 22', 'images/large_9db60ded15222b1c9179a65a5c988132.jpg', '34.99')">Add to Cart - £34.99</button>
+                    </div>
+                </div>
+                <div class="book-item">
+                    <a href="book-detail.html">
+                        <img src="images/large_c007b20dcb02f2fb464f82169a34f6a9.jpg" alt="Book 23">
+                    </a>
+                    <div class="overlay">
+                        <button onclick="event.stopPropagation(); window.location.href='book-detail.html';">View Details</button>
+                        <button onclick="event.stopPropagation(); addToCart('Book 23', 'images/large_c007b20dcb02f2fb464f82169a34f6a9.jpg', '14.99')">Add to Cart - £14.99</button>
+                    </div>
+                </div>
+                <div class="book-item">
+                    <a href="book-detail.html">
+                        <img src="images/large_65b0ae90317f7596d6f95bfdd6131398.jpg" alt="Book 24">
+                    </a>
+                    <div class="overlay">
+                        <button onclick="event.stopPropagation(); window.location.href='book-detail.html';">View Details</button>
+                        <button onclick="event.stopPropagation(); addToCart('Book 24', 'images/large_65b0ae90317f7596d6f95bfdd6131398.jpg', '39.99')">Add to Cart - £39.99</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer id="footer">
+        <p>&copy; 2025 Emblemy Collectible Books. All rights reserved.</p>
+        <div class="social-icons">
+            <img src="images/image.png" alt="Facebook Link">
+            <img src="images/image(1).png" alt="Instagram Link">
+            <img src="images/image(2).png" alt="Twitter Link">
+            <img src="images/image(3).png" alt="Whatsapp Link">
+        </div>
+    </footer>
+    
+    <script>
+        function toggleMenu() {
+            document.querySelector(".navbar ul").classList.toggle("show");
+        }
+    </script>
+    
+
+
+</body>
+</html>
