@@ -1,0 +1,738 @@
+<a href="book-detail.html?title=Moby-Dick&author=Herman Meville&image=Books Images/Moby-Dick – Herman Melville.jpg&price=15.99&summary=Moby-Dick is a classic novel that follows the journey of Ishmael, a sailor who joins the whaling ship Pequod. The ship’s captain, Ahab, is obsessed with hunting down Moby Dick, a massive white whale that had previously maimed him. As the crew sails across the ocean, they encounter strange and perilous events, revealing themes of fate, revenge, and man’s struggle against nature. Ahab’s relentless pursuit of the whale leads to a tragic and unforgettable climax." class="btn btn-primary">View Details</a>
+                          
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>19th Century Books | T_Emblemy</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        /* Inherited styles from Front Page 2 */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background-color: bisque;
+            background-image: url('images/pawel-czerwinski-M40QnK-PXkI-unsplash.jpg');
+            background-position: bottom;
+            color: #423d38;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #2a2725;
+            padding-top: 25px;
+            display: flex;
+            align-items: center;
+            z-index: 1000;
+            justify-content: center;
+            margin: -8px;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .navbar ul li {
+            display: inline;
+            padding-left: 25px;
+            padding-right: 25px;
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .navbar ul {
+                display: none;
+                flex-direction: column;
+                background: #35312d;
+                position: absolute;
+                top: 50px;
+                width: 100%;
+                left: 0;
+                text-align: center;
+                padding: 10px;
+            }
+
+            .navbar ul.show {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+        }
+        /* Main Content Styling */
+        .btn-primary {
+            background-color: #6b5c4b;
+            border-color: #584b3d;      
+        }
+
+        .container {
+            padding-top: 100px;
+            background-color: rgba(42, 39, 37, 0.9);
+        }
+
+        .card {
+            background: #f5e6d3; /* Vintage paper color */
+            border: 1px solid #6b5c4b;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+
+        /* Filter Section */
+        
+        #categoryFilter {
+            background: rgba(53, 49, 45, 0.7);
+            border-radius: 25px;
+            padding: 15px;
+        }
+
+        .list-group-item {
+            background: transparent;
+            color: white;
+            border: 1px solid #ff6600;
+            margin-bottom: 5px;
+            cursor: pointer;
+        }
+
+        .list-group-item.active {
+            background: #ff6600;
+            border-color: #ff6600;
+        }
+
+        /* Matching Footer */
+        footer {
+            background: #35312d;
+            color: white;
+            padding: 20px;
+            margin-top: 20px;
+            margin: -8px;
+        }
+
+        .social-icons img {
+            width: 30px;
+            margin: 5px;
+        }
+
+        .FeaturedBooks {
+            padding-top: 15px;
+        }
+
+        .ClassicBooks {
+            padding-top: 15px;
+        }
+
+        .MostPopularSeries{
+            padding-top: 15px;
+        }
+
+        .NewArrivals {
+            padding-top: 15px;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Keep your existing navbar structure from Front Page 2 -->
+    <header>
+        <nav class="navbar">
+            <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="books page.html">Books</a></li>
+                <li><a href="19th Century Books Page.html">19th Century Books</a></li>
+                <li><a href="Cart Page 2.html">Cart (<span id="cart-count">0</span>)</a></li>
+                <li><a href="Contact Us Page.html">Contact Us</a></li>
+                <li><a href="About us.html">About Us</a></li>
+
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h2 class="text-white mb-4">19th Century Classics</h2>
+
+                    <!--Image Icons for Books Start Here-->
+        <!-- Previous code remains the same until the book cards section -->
+        <div class="row">
+            <!-- Pride and Prejudice (Existing) -->
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="Book covers/Pride and Prejudice.jpg" class="card-img-top" alt="Pride and Prejudice First Edition">
+                    <div class="card-body">
+                        <h5 class="card-title">Pride and Prejudice</h5>
+                        <p class="card-text">Jane Austen (1813)</p>
+                        <p class="text-muted">First Edition</p>
+                        <button class="btn btn-primary" 
+                                onclick="addToCart('Pride and Prejudice', 'Book covers/Pride and Prejudice.jpg', '249.99')">
+                                Add to Cart - £249.99                   
+                        </button>
+                        <a href="book-detail.html?title=Pride and Prejudice&author=Jane Austen&image=Book covers/Pride and Prejudice.jpg&price=249.99&summary=ygygygyg" class="btn btn-primary">View Details</a>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Moby-Dick (Existing) -->
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="Book covers/Moby-Dick.jpg" class="card-img-top" alt="Moby Dick Original Cover">
+                    <div class="card-body">
+                        <h5 class="card-title">Moby-Dick</h5>
+                        <p class="card-text">Herman Melville (1851)</p>
+                        <p class="text-muted">Original 1851 Edition</p>
+                        <button class="btn btn-primary" 
+                                onclick="addToCart('Moby-Dick', 'Book covers/Moby-Dick.jpg', '349.99')">
+                            Add to Cart - £349.99
+                        </button>
+                        <a href="book-detail.html?title=Moby-Dick&author=Herman Melville&image=Book covers/Moby-Dick.jpg&price=349.99&summary=An epic tale of obsession, following Captain Ahab’s relentless pursuit of the white whale, Moby-Dick. The novel explores themes of fate, humanity, and the struggle against nature" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- New Entries Start -->
+            <!-- Wuthering Heights -->
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="Book covers/Wuthering Heights.jpg" class="card-img-top" alt="Wuthering Heights Original Manuscript">
+                    <div class="card-body">
+                        <h5 class="card-title">Wuthering Heights</h5>
+                        <p class="card-text">Emily Brontë (1847)</p>
+                        <p class="text-muted">First Edition</p>
+                        <button class="btn btn-primary" 
+                                onclick="addToCart('Wuthering Heights', 'Book covers/Wuthering Heights.jpg', '299.99')">
+                            Add to Cart - £299.99
+                        </button>
+                        <a href="book-detail.html?title=Wuthering Heights&author=Emily Brontë&image=Book covers/Wuthering Heights.jpg&price=299.99&summary=Wuthering Heights is a dark and passionate tale of love, revenge, and obsession set on the haunting Yorkshire moors. The novel follows the intense and tragic relationship between Heathcliff, an orphan taken in by the Earnshaw family, and Catherine Earnshaw, his childhood companion and true love.
+                        Despite their deep connection, Catherine chooses to marry the wealthy Edgar Linton instead of Heathcliff, believing it will elevate her social status. Heartbroken and enraged, Heathcliff seeks vengeance on those he believes wronged him, leading to a cycle of cruelty and suffering that spans generations."  class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jane Eyre -->
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="Book covers/Jane Eyre.jpg" class="card-img-top" alt="Jane Eyre First Edition">
+                    <div class="card-body">
+                        <h5 class="card-title">Jane Eyre</h5>
+                        <p class="card-text">Charlotte Brontë (1847)</p>
+                        <p class="text-muted">Original Three-Volume Set</p>
+                        <button class="btn btn-primary" 
+                                onclick="addToCart('Jane Eyre', 'Book covers/Jane Eyre.jpg', '325.00')">
+                            Add to Cart - £325.00
+                        </button>
+                        <a href="book-detail.html?title=Jane Eyre&author=Charlotte Brontë&image=Books Images/Jane Eyre – Charlotte Brontë.jpg&price=325.00&summary=Jane Eyre is a timeless novel that follows the life of Jane, an orphan who endures a harsh childhood before becoming a governess at Thornfield Hall. There, she falls in love with the mysterious and brooding master of the estate, Mr. Rochester. However, their romance is threatened by dark secrets hidden within Thornfield’s walls.
+                                As Jane navigates love, independence, and morality, she faces difficult choices that test her strength and integrity. Refusing to compromise her principles, she embarks on a journey of self-discovery, ultimately finding a balance between passion and self-respect." class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Great Expectations -->
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="Book covers/Great Expectations.jpg" class="card-img-top" alt="Great Expectations Serialized Parts">
+                    <div class="card-body">
+                        <h5 class="card-title">Great Expectations</h5>
+                        <p class="card-text">Charles Dickens (1861)</p>
+                        <p class="text-muted">Original Serialized Parts</p>
+                        <button class="btn btn-primary" 
+                                onclick="addToCart('Great Expectations', 'Book covers/Great Expectations.jpg', '275.50')">
+                            Add to Cart - £275.50
+                        </button>
+                        <a href="book-detail.html?title=Great Expectations&author=Charles Dickens&image=Books Images/Great Expectations – Charles Dickens.jpg&price=275.50&summary=Great Expectations follows the life of Pip, an orphan growing up in 19th-century England. Raised by his harsh sister and her kind husband, Joe, Pip’s life changes when he helps an escaped convict and later meets the wealthy, eccentric Miss Havisham and her beautiful but cold-hearted ward, Estella.
+                                Pip suddenly receives a mysterious fortune from an unknown benefactor, allowing him to move to London and live as a gentleman. However, as he navigates love, ambition, and social class, he learns painful truths about wealth, identity, and the true nature of happiness. The novel explores themes of ambition, morality, and redemption as Pip matures and discovers what truly matters in life." class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Crime and Punishment -->
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="Book covers/Crime and Punishment.jpg" class="card-img-top" alt="Crime and Punishment First Russian Edition">
+                    <div class="card-body">
+                        <h5 class="card-title">Crime and Punishment</h5>
+                        <p class="card-text">Fyodor Dostoevsky (1866)</p>
+                        <p class="text-muted">First Russian Edition</p>
+                        <button class="btn btn-primary" 
+                                onclick="addToCart('Crime and Punishment', 'Book covers/Crime and Punishment.jpg', '399.99')">
+                            Add to Cart - £399.99
+                        </button>
+                        <a href="book-detail.html?title=Crime and Punishment &author=Fyodor Dostoevsky&image=Books Images/Crime and Punishment – Fyodor Dostoevsky.jpg&price=399.99&summary=Crime and Punishment follows the psychological journey of Rodion Raskolnikov, a destitute former student in St. Petersburg who commits a brutal murder, believing he is justified in killing a corrupt pawnbroker to serve a greater good. However, after the crime, he is consumed by overwhelming guilt and paranoia, leading him into a psychological and moral crisis.
+                                As he struggles with his conscience, he encounters Sonia Marmeladov, a kind and self-sacrificing woman who becomes his source of redemption. Meanwhile, the cunning investigator Porfiry Petrovich slowly unravels the truth, pushing Raskolnikov toward confession.Dostoevsky’s novel is a profound exploration of morality, justice, redemption, and the human psyche, questioning whether one can escape the consequences of their actions." class="btn btn-primary">View Details</a>                              
+                                
+                    </div>
+                </div>
+            </div>
+
+            <!-- War and Peace -->
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="Book covers/War and Peace.jpg" class="card-img-top" alt="War and Peace First Edition">
+                    <div class="card-body">
+                        <h5 class="card-title">War and Peace</h5>
+                        <p class="card-text">Leo Tolstoy (1869)</p>
+                        <p class="text-muted">Complete First Edition</p>
+                        <button class="btn btn-primary" 
+                                onclick="addToCart('War and Peace', 'Book covers/War and Peace.jpg', '449.99')">
+                            Add to Cart - £449.99
+                        </button>
+                        <a href="book-detail.html?title=War and Peace&author=Leo Tolstoy&image=Books Images/War and Peace – Leo Tolstoy.jpg&price=449.99&summary=War and Peace follows Russian aristocratic families during the Napoleonic Wars, exploring love, fate, and personal transformation. Pierre Bezukhov seeks meaning, Prince Andrei grapples with war’s futility, and Natasha Rostova experiences love and loss. Napoleon’s invasion of Russia shapes their lives, culminating in Moscow’s burning and his retreat. Tolstoy blends history, philosophy, and human drama in this epic novel." class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- The Scarlet Letter -->
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="Book covers/The Scarlet Letter.jpg" class="card-img-top" alt="The Scarlet Letter First Printing">
+                    <div class="card-body">
+                        <h5 class="card-title">The Scarlet Letter</h5>
+                        <p class="card-text">Nathaniel Hawthorne (1850)</p>
+                        <p class="text-muted">First Printing</p>
+                        <button class="btn btn-primary" 
+                                onclick="addToCart('The Scarlet Letter', 'Book covers/The Scarlet Letter.jpg', '289.99')">
+                            Add to Cart - £289.99
+                        </button>
+                        <a href="book-detail.html?title=The Scarlet Letter&author=Nathaniel Hawthorne&image=Books Images/The Scarlet Letter – Nathaniel Hawthorne.jpg&price=289.99&summary=The Scarlet Letter follows Hester Prynne, a woman in 17th-century Puritan Boston who bears an illegitimate child and is forced to wear a scarlet A for adultery. As she endures public shame, her secret lover, Reverend Dimmesdale, struggles with guilt, while her vengeful husband, Chillingworth, seeks revenge. The novel explores sin, redemption, and societal hypocrisy. Hawthorne’s classic delves into morality and human nature." class="btn btn-primary">View Details</a>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Frankenstein -->
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="Book covers/Frankenstein.jpg" class="card-img-top" alt="Frankenstein 1818 Edition">
+                    <div class="card-body">
+                        <h5 class="card-title">Frankenstein</h5>
+                        <p class="card-text">Mary Shelley (1818)</p>
+                        <p class="text-muted">1818 First Edition</p>
+                        <button class="btn btn-primary" 
+                                onclick="addToCart('Frankenstein', 'Book covers/Frankenstein.jpg', '599.99')">
+                            Add to Cart - £599.99
+                        </button>
+                        <a href="book-detail.html?title=Frankenstein&author=Mary Shelley&image=Book covers/Frankenstein.jpg&price=599.99&summary=A groundbreaking Gothic novel about Victor Frankenstein, a scientist who creates a sentient creature in an unorthodox experiment. The story delves into themes of ambition, morality, and the consequences of playing God." class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Les Misérables -->
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="Book covers/Les Miserables.jpg" class="card-img-top" alt="Les Misérables First French Edition">
+                    <div class="card-body">
+                        <h5 class="card-title">Les Misérables</h5>
+                        <p class="card-text">Victor Hugo (1862)</p>
+                        <p class="text-muted">Original French Edition</p>
+                        <button class="btn btn-primary" 
+                                onclick="addToCart('Les Misérables', 'Book covers/Les Miserables.jpg', '379.99')">
+                            Add to Cart - £379.99
+                        </button>
+                        <a href="book-detail.html?title=Les Misérables&author=Les Misérables&image=Book covers/Les Miserables.jpg&price=379.99&summary=A sweeping epic following the lives of several characters, including the ex-convict Jean Valjean, as they navigate poverty, revolution, and redemption in 19th-century France." class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- The Picture of Dorian Gray -->
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="Book covers/The Picture of Dorian Gray.jpg" class="card-img-top" alt="Dorian Gray First Edition">
+                    <div class="card-body">
+                        <h5 class="card-title">The Picture of Dorian Gray</h5>
+                        <p class="card-text">Oscar Wilde (1890)</p>
+                        <p class="text-muted">Uncensored Edition</p>
+                        <button class="btn btn-primary" 
+                                onclick="addToCart('The Picture of Dorian Gray', 'Book covers/The Picture of Dorian Gray.jpg', '329.99')">
+                            Add to Cart - £329.99
+                        </button>
+                        <a href="book-detail.html?title=The Picture of Dorian Gray&author=Oscar Wilde&image=Book covers/The Picture of Dorian Gray.jpg&price=329.99&summary=A philosophical novel about Dorian Gray, a man whose portrait ages while he remains youthful, reflecting his moral decay as he indulges in a life of hedonism." class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Anna Karenina -->
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="Book covers/Anna Karenina.jpg" class="card-img-top" alt="Anna Karenina First Russian Edition">
+                    <div class="card-body">
+                        <h5 class="card-title">Anna Karenina</h5>
+                        <p class="card-text">Leo Tolstoy (1877)</p>
+                        <p class="text-muted">Serialized First Edition</p>
+                        <button class="btn btn-primary" 
+                                onclick="addToCart('Anna Karenina', 'Book covers/Anna Karenina.jpg', '419.99')">
+                            Add to Cart - £419.99
+                        </button>
+                        <a href="book-detail.html?title=Anna Karenina&author=Leo Tolstoy&image=Book covers/Anna Karenina.jpg&price=419.99&summary=A tragic novel about Anna Karenina, a married woman who embarks on an affair with Count Vronsky, exploring themes of love, infidelity, and societal norms" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- The Adventures of Huckleberry Finn -->
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="Book covers\Huckleberry Finn.jpeg" class="card-img-top" alt="Huckleberry Finn First Edition">
+                    <div class="card-body">
+                        <h5 class="card-title">Adventures of Huckleberry Finn</h5>
+                        <p class="card-text">Mark Twain (1884)</p>
+                        <p class="text-muted">First US Edition</p>
+                        <button class="btn btn-primary" 
+                                onclick="addToCart('Huckleberry Finn', 'Book covers/Huckleberry Finn.jpeg', '349.99')">
+                            Add to Cart - £349.99
+                        </button>
+                        <a href="book-detail.html?title=Adventures of Huckleberry Finn&author=Mark Twain (1884)&image=Book covers/Huckleberry Finn.jpeg&price=349.99&summary=Huck Finn, a young boy escaping his abusive father, journeys down the Mississippi River with Jim, an enslaved man seeking freedom. Through their adventures, Huck grapples with societal norms and his own conscience, ultimately challenging racism and hypocrisy. A landmark of American literature, the novel blends humor, adventure, and sharp social critique." class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Middlemarch -->
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="Book covers/Middlemarch.jpg" class="card-img-top" alt="Middlemarch First Edition">
+                    <div class="card-body">
+                        <h5 class="card-title">Middlemarch</h5>
+                        <p class="card-text">George Eliot (1871)</p>
+                        <p class="text-muted">Complete Eight-Volume Set</p>
+                        <button class="btn btn-primary" 
+                                onclick="addToCart('Middlemarch', 'Book covers/Middlemarch.jpg', '499.99')">
+                            Add to Cart - £499.99
+                        </button>
+                        <a href="book-detail.html?title=Middlemarc&author=George Eliot&image=Book covers/Middlemarch.jpg&price=499.99&summary=A richly detailed novel exploring the lives and relationships of the residents of a small English town, with themes of ambition, marriage, and societal change." class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- The Count of Monte Cristo -->
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="Book covers/Count of Monte Cristo.jpg" class="card-img-top" alt="Count of Monte Cristo Original Serial">
+                    <div class="card-body">
+                        <h5 class="card-title">The Count of Monte Cristo</h5>
+                        <p class="card-text">Alexandre Dumas (1844)</p>
+                        <p class="text-muted">Original Serial Installments</p>
+                        <button class="btn btn-primary" 
+                                onclick="addToCart('Count of Monte Cristo', 'Book covers/Count of Monte Cristo.jpg', '369.99')">
+                            Add to Cart - £369.99
+                        </button>
+                        <a href="book-detail.html?title=The Count of Monte Cristo&author=Alexandre Dumas&image=Book covers/Count of Monte Cristo.jpg&price=369.99&summary=The Count of Monte Cristo by Alexandre Dumas is a tale of betrayal, revenge, and redemption. Wrongfully imprisoned, Edmond Dantès escapes, discovers a hidden treasure, and reinvents himself as the wealthy Count of Monte Cristo. Using his new identity, he meticulously plots vengeance against those who wronged him while grappling with the consequences of his actions." class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Madame Bovary -->
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="Book covers/Madame Bovary.jpg" class="card-img-top" alt="Madame Bovary First French Edition">
+                    <div class="card-body">
+                        <h5 class="card-title">Madame Bovary</h5>
+                        <p class="card-text">Gustave Flaubert (1856)</p>
+                        <p class="text-muted">Original French Version</p>
+                        <button class="btn btn-primary" 
+                                onclick="addToCart('Madame Bovary', 'Book covers/Madame Bovary.jpg', '289.99')">
+                            Add to Cart - £289.99
+                        </button>
+                        <a href="book-detail.html?title=Madame Bovary&author=Gustave Flaubert (1856)&image=Book covers/Madame Bovary.jpg&price=89.99&summary=The story of Emma Bovary, a woman disillusioned by her mundane life and trapped in a cycle of romantic fantasies and extramarital affairs, leading to her tragic downfall." class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- The Brothers Karamazov -->
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="Book covers/Brothers Karamazov.jpg" class="card-img-top" alt="Brothers Karamazov First Edition">
+                    <div class="card-body">
+                        <h5 class="card-title">The Brothers Karamazov</h5>
+                        <p class="card-text">Fyodor Dostoevsky (1880)</p>
+                        <p class="text-muted">Complete First Edition</p>
+                        <button class="btn btn-primary" 
+                                onclick="addToCart('Brothers Karamazov', 'Book covers/Brothers Karamazov.jpg', '389.99')">
+                            Add to Cart - £389.99
+                        </button>
+                        <a href="book-detail.html?title=The Brothers Karamazov&author=Fyodor Dostoevsky (1880)&image=Book covers/Brothers Karamazov.jpg&price=389.99&summary=A philosophical novel delving into the lives of the Karamazov brothers and their father, exploring themes of faith, morality, and free will." class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Little Women -->
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="Book covers\Little Women.jpeg" class="card-img-top" alt="Little Women First Edition">
+                    <div class="card-body">
+                        <h5 class="card-title">Little Women</h5>
+                        <p class="card-text">Louisa May Alcott (1868)</p>
+                        <p class="text-muted">Original Two-Volume Set</p>
+                        <button class="btn btn-primary" 
+                                onclick="addToCart('Little Women', 'Book covers/Little Women.jpeg', '279.99')">
+                            Add to Cart - £279.99
+                        </button>
+                        <a href="book-detail.html?title=Little Women&author=Louisa May Alcott (1868)&image=Book covers/Little Women.jpeg&price=279.99&summary=Little Women by Louisa May Alcott follows the lives of the four March sisters—Meg, Jo, Beth, and Amy—as they navigate love, ambition, and hardship during the American Civil War. Each sister faces personal struggles, from Jo’s literary dreams to Beth’s fragile health, shaping their journey to womanhood. Through triumphs and losses, the novel celebrates family, resilience, and the power of love." class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- The Time Machine -->
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="Book covers/Time Machine.jpg" class="card-img-top" alt="The Time Machine First Edition">
+                    <div class="card-body">
+                        <h5 class="card-title">The Time Machine</h5>
+                        <p class="card-text">H.G. Wells (1895)</p>
+                        <p class="text-muted">First UK Edition</p>
+                        <button class="btn btn-primary" 
+                                onclick="addToCart('The Time Machine', 'Book covers/Time Machine.jpg', '229.99')">
+                            Add to Cart - £229.99
+                        </button>
+                        <a href="book-detail.html?title=The Time Machine&author=H.G. Wells (1895)&image=Book covers/Time Machine.jpg&price=229.99&summary=A Victorian scientist invents a machine that allows him to travel through time. Venturing to the distant future, he encounters the peaceful Eloi and the sinister, underground-dwelling Morlocks. As he struggles to return home, he witnesses humanity's ultimate fate." class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dracula -->
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="Book covers/Dracula.jpg" class="card-img-top" alt="Dracula First Edition">
+                    <div class="card-body">
+                        <h5 class="card-title">Dracula</h5>
+                        <p class="card-text">Bram Stoker (1897)</p>
+                        <p class="text-muted">Original Archibald Constable Edition</p>
+                        <button class="btn btn-primary" 
+                                onclick="addToCart('Dracula', 'Book covers/Dracula.jpg', '499.99')">
+                            Add to Cart - £499.99
+                        </button>
+                        <a href="book-detail.html?title=Dracula&author=Bram Stoker (1897)&image=Book covers/Dracula.jpg&price=499.99&summary=Jonathan Harker visits Count Dracula’s castle in Transylvania, unknowingly becoming trapped by the vampire. As Dracula moves to England, Professor Van Helsing and a group of friends must stop his reign of terror. The novel unfolds as a gripping battle between good and evil." class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- The Strange Case of Dr Jekyll and Mr Hyde -->
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="Book covers/Jekyll and Hyde.jpg" class="card-img-top" alt="Jekyll and Hyde First Edition">
+                    <div class="card-body">
+                        <h5 class="card-title">Dr Jekyll and Mr Hyde</h5>
+                        <p class="card-text">Robert Louis Stevenson (1886)</p>
+                        <p class="text-muted">Original Paperback</p>
+                        <button class="btn btn-primary" 
+                                onclick="addToCart('Dr Jekyll and Mr Hyde', 'Book covers/Jekyll and Hyde.jpg', '349.99')">
+                            Add to Cart - £349.99
+                        </button>
+                        <a href="book-detail.html?title=Dr Jekyll and Mr Hyde&author=Book covers/Jekyll and Hyde.jpg&image=Book covers/Jekyll and Hyde.jpg&price=349.99&summary=Dr. Jekyll, a respectable scientist, creates a potion that transforms him into the cruel and monstrous Mr. Hyde. As his darker side grows uncontrollable, Jekyll struggles to suppress his evil alter ego. The story explores the duality of human nature and the consequences of unchecked desires." class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- The War of the Worlds -->
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="Book covers/War of the Worlds.jpeg" class="card-img-top" alt="War of the Worlds First Edition">
+                    <div class="card-body">
+                        <h5 class="card-title">The War of the Worlds</h5>
+                        <p class="card-text">H.G. Wells (1897)</p>
+                        <p class="text-muted">Serialized Version</p>
+                        <button class="btn btn-primary" 
+                                onclick="addToCart('War of the Worlds', 'Book covers/War of the Worlds.jpeg', '269.99')">
+                            Add to Cart - £269.99
+                        </button>
+                        <a href="book-detail.html?title=The War of the Worlds&author=H.G. Wells (1897)&image=Book covers/War of the Worlds.jpeg&price=269.99&summary=When Martians invade Earth with terrifying, advanced weaponry, humanity is powerless against their might. The novel follows an unnamed protagonist as he struggles to survive the devastation. A commentary on imperialism and survival, it remains one of the greatest sci-fi classics." class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sense and Sensibility -->
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="Book covers/Sense and Sensibility.jpeg" class="card-img-top" alt="Sense and Sensibility First Edition">
+                    <div class="card-body">
+                        <h5 class="card-title">Sense and Sensibility</h5>
+                        <p class="card-text">Jane Austen (1811)</p>
+                        <p class="text-muted">First Edition Set</p>
+                        <button class="btn btn-primary" 
+                                onclick="addToCart('Sense and Sensibility', 'Book covers/Sense and Sensibility.jpeg', '399.99')">
+                            Add to Cart - £399.99
+                        </button>
+                        <a href="book-detail.html?title=Sense and Sensibility&author=Jane Austen (1811)&image=Book covers/Sense and Sensibility.jpeg&price=399.99&summary=Sisters Elinor and Marianne Dashwood navigate love, heartbreak, and social expectations in 19th-century England. While Elinor embodies sense with her quiet restraint, Marianne follows sensibility, embracing intense emotions. Their contrasting approaches to love lead to personal growth and understanding." class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Around the World in Eighty Days -->
+            <div class="col-md-4 mb-4 book-card" data-category="Adventure">
+                <div class="card">
+                    <img src="Book covers/Around the World in Eighty Days.jpg" class="card-img-top" alt="Around the World in Eighty Days">
+                    <div class="card-body">
+                        <h5 class="card-title">Around the World in Eighty Days</h5>
+                        <p class="card-text">Jules Verne (1873)</p>
+                        <p class="text-muted">First Edition Set</p>
+                        <button class="btn btn-primary" onclick="addToCart('Around the World in Eighty Days', 'Book covers/Around the World in Eighty Days.jpg', '379.99')">
+                            Add to Cart - £379.99
+                        </button>
+                        <a href="book-detail.html?title=Around the World in Eighty Days&author=Jules Verne (1873)&image=Book covers/Around the World in Eighty Days.jpg&price=379.99&summary=Phileas Fogg, a precise and disciplined Englishman, wagers that he can travel around the world in 80 days. Along with his loyal valet, Passepartout, he faces unexpected challenges, from delays to daring rescues. Their adventure is a thrilling race against time filled with surprises." class="btn btn-primary">View Details</a>
+                            
+                    </div>
+                </div>
+            </div>
+
+            <!-- The Three Musketeers -->
+            <div class="col-md-4 mb-4 book-card" data-category="Adventure">
+                <div class="card">
+                    <img src="Book covers/The Three Musketeers.jpg" class="card-img-top" alt="The Three Musketeers">
+                    <div class="card-body">
+                        <h5 class="card-title">The Three Musketeers</h5>
+                        <p class="card-text">Alexandre Dumas (1844)</p>
+                        <p class="text-muted">First Edition Set</p>
+                        <button class="btn btn-primary" onclick="addToCart('The Three Musketeers', 'Book covers/The Three Musketeers.jpg', '349.99')">
+                            Add to Cart - £349.99
+                        </button>
+                        <a href="book-detail.html?title=The Three Musketeers&author=Alexandre Dumas&image=Book covers/The Three Musketeers.jpg&price=349.99&summary=Young d’Artagnan travels to Paris to join the King’s Musketeers, befriending Athos, Porthos, and Aramis. Together, they embark on daring missions against political enemies and uncover devious plots. Their motto, All for one, and one for all, defines their loyalty and bravery." class="btn btn-primary">View Details</a>
+                       
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fathers and Sons -->
+            <div class="col-md-4 mb-4 book-card" data-category="Philosophical Fiction">
+                <div class="card">
+                    <img src="Book covers\Fathers and Sons.jpeg" class="card-img-top" alt="Fathers and Sons">
+                    <div class="card-body">
+                        <h5 class="card-title">Fathers and Sons</h5>
+                        <p class="card-text">Ivan Turgenev (1862)</p>
+                        <p class="text-muted">First Edition Set</p>
+                        <button class="btn btn-primary" onclick="addToCart('Fathers and Sons', 'Book covers/Fathers and Sons.jpeg', '319.99')">
+                            Add to Cart - £319.99
+                        </button>
+                        <a href="book-detail.html?title=Fathers and Sons&author=Ivan Turgenev (1862)&image=Book covers/Fathers and Sons.jpeg&price=319.99&summary=A young nihilist, Bazarov, challenges the values of 19th-century Russian society, clashing with the older generation. His radical beliefs and rejection of tradition lead to personal struggles and heartbreak. The novel explores generational conflict and the impact of changing ideologies" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- David Copperfield -->
+            <div class="col-md-4 mb-4 book-card" data-category="Coming-of-Age">
+                <div class="card">
+                    <img src="Book covers/David Copperfield.jpg" class="card-img-top" alt="David Copperfield">
+                    <div class="card-body">
+                        <h5 class="card-title">David Copperfield</h5>
+                        <p class="card-text">Charles Dickens (1850)</p>
+                        <p class="text-muted">First Edition Set</p>
+                        <button class="btn btn-primary" onclick="addToCart('David Copperfield', 'Book covers/David Copperfield.jpg', '389.99')">
+                            Add to Cart - £389.99
+                        </button>
+                        <a href="book-detail.html?title=David Copperfield&author=Charles Dickens (1850)&image=Book covers/David Copperfield.jpg&price=389.99&summary=David Copperfield recounts his life’s journey from childhood hardship to literary success. Along the way, he encounters unforgettable characters, from the wicked Uriah Heep to the kind-hearted Micawber. A semi-autobiographical novel, it explores resilience, love, and self-discovery." class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ivanhoe -->
+            <div class="col-md-4 mb-4 book-card" data-category="Historical Fiction">
+                <div class="card">
+                    <img src="Book covers/Ivanhoe.jpg" class="card-img-top" alt="Ivanhoe">
+                    <div class="card-body">
+                        <h5 class="card-title">Ivanhoe</h5>
+                        <p class="card-text">Walter Scott (1819)</p>
+                        <p class="text-muted">First Edition Set</p>
+                        <button class="btn btn-primary" onclick="addToCart('Ivanhoe', 'Book covers/Ivanhoe.jpg', '329.99')">
+                            Add to Cart - £329.99
+                        </button>
+                        <a href="book-detail.html?title=Ivanhoe&author=Walter Scott (1819)&image=Book covers/Ivanhoe.jpg&price=329.99&summary=Set in medieval England, Ivanhoe follows a disinherited knight as he fights for justice and love. Featuring Robin Hood, jousting tournaments, and noble outlaws, the novel captures the era’s romance and adventure. It played a key role in reviving interest in chivalry and medieval tales." class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Treasure Island -->
+            <div class="col-md-4 mb-4 book-card" data-category="Adventure">
+                <div class="card">
+                    <img src="Book covers/Treasure Island.jpg" class="card-img-top" alt="Treasure Island">
+                    <div class="card-body">
+                        <h5 class="card-title">Treasure Island</h5>
+                        <p class="card-text">Robert Louis Stevenson (1883)</p>
+                        <p class="text-muted">First Edition Set</p>
+                        <button class="btn btn-primary" onclick="addToCart('Treasure Island', 'Book covers/Treasure Island.jpg', '359.99')">
+                            Add to Cart - £359.99
+                        </button>
+                        <a href="book-detail.html?title=Treasure Island&author=Robert Louis Stevenson (1883)&image=Book covers/Treasure Island.jpg&price=359.99&summary=Young Jim Hawkins embarks on a thrilling sea voyage in search of buried treasure. Along the way, he meets the charismatic yet treacherous pirate, Long John Silver. The novel is a defining adventure story filled with mutiny, greed, and discovery." class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Alice’s Adventures in Wonderland --> 
+            <div class="col-md-4 mb-4 book-card" data-category="Fantasy">
+                <div class="card">
+                    <img src="Book covers/Alice.jpg" class="card-img-top" alt="Alice’s Adventures in Wonderland">
+                    <div class="card-body">
+                        <h5 class="card-title">Alice’s Adventures in Wonderland</h5>
+                        <p class="card-text">Lewis Carroll (1865)</p>
+                        <p class="text-muted">First Edition Set</p>
+                        <button class="btn btn-primary" onclick="addToCart('Alice’s Adventures in Wonderland', 'Book covers/Alice.jpg', '399.99')">
+                            Add to Cart - £399.99
+                        </button>
+                        <a href="book-detail.html?title=Alice’s Adventures in Wonderland&author=Lewis Carroll (1865)&image=Book covers/Alice.jpg&price=399.99&summary=Alice falls down a rabbit hole into a whimsical world filled with peculiar creatures and illogical rules. From the grinning Cheshire Cat to the tyrannical Queen of Hearts, she encounters absurdity at every turn. The novel is a playful exploration of imagination, language, and logic." class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+            
+
+        </div>
+<!-- Rest of the code remains the same -->
+
+    <footer id="footer">
+        <p>&copy; 2025 Emblemy Collectible Books. All rights reserved.</p>
+        <div class="social-icons">
+            <img src="images/image.png" alt="Facebook Link">
+            <img src="images/image(1).png" alt="Instagram Link">
+            <img src="images/image(2).png" alt="Twitter Link">
+            <img src="images/image(3).png" alt="Whatsapp Link">
+        </div>
+    </footer>
+
+    <!-- Keep your existing scripts -->
+
+    <script>
+        // Simplified cart functionality
+        function addToCart(bookName, bookImage, bookPrice) {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            cart.push({ 
+                name: bookName, 
+                image: bookImage, 
+                price: bookPrice,
+                era: "19th Century" // Added era classification
+            });
+            localStorage.setItem("cart", JSON.stringify(cart));
+            updateCartCount();
+        }
+
+        function updateCartCount() {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            document.getElementById("cart-count").innerText = cart.length;
+        }
+        document.addEventListener("DOMContentLoaded", updateCartCount);
+
+        function toggleMenu() {
+            document.querySelector(".navbar ul").classList.toggle("show");
+        }
+    </script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
