@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Your Cart</title>
+    
+    <style>
+        html{
+            scroll-behavior:smooth;
+        }
+
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background-color: bisque;
+            background-image: url('images/pawel-czerwinski-M40QnK-PXkI-unsplash.jpg');  
+            background-size: cover;
+            background-position: center;
+            color: #423d38;
+            text-align: center;           
+        }
+
+        .navbar {
+            position: fixed; /* Keeps the navbar fixed at the top */
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #35312d;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            justify-content: center;
+            background-color: #35312d;
+            margin: -8px;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .navbar ul li {
+            display: inline;
+            padding-left: 25px;
+            padding-right: 25px;
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .navbar ul {
+                display: none;
+                flex-direction: column;
+                background: #35312d;
+                position: absolute;
+                top: 50px;
+                width: 100%;
+                left: 0;
+                text-align: center;
+                padding: 10px;
+            }
+
+            .navbar ul.show {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+        }
+        
+        
+        @media (min-width: 769px) {
+            .cart-section {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+                width: 80%;
+                margin: auto;
+                gap: 40px;
+            }
+
+            .cart-container {
+                width: 65%;
+                text-align: left;
+                background:  rgba(53, 49, 45, 0.85);
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Matching checkout box */
+            }   
+
+            .checkout-box {
+                width: 30%;
+                background:  rgba(53, 49, 45, 0.85);
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                color: white;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .cart-container {
+                width: 100%;
+                max-height: 400px;
+                overflow-y: auto;
+                background: rgba(53, 49, 45, 0.7); /* Ensure background remains white */
+                padding: 15px;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .checkout-footer {
+                position: fixed;
+                bottom: 0;
+                width: 100%;
+                background: #35312d;
+                padding: 15px;
+                text-align: center;
+            }
+
+            .checkout-footer button {
+                background: #ff6600;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                cursor: pointer;
+                font-size: 18px;
+            }
+        }
+
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+            color: white;
+        }
+
+        .cart-item img {
+            width: 120px;
+            height: auto; 
+            border-radius: 5px;
+        }
+        
+
+
+        .cart-total {
+            font-size: 20px;
+            margin-top: 10px;
+        }
+
+        .checkout-btn {
+            background: #ff6600;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+            border-radius: 4px;
+        }
+
+
+        /* Footer */
+        footer {
+            background: #35312d;
+            color: white;
+            padding: 20px;
+            margin-top: 20px;
+            margin: -8px;
+        }
+
+        .social-icons img {
+            width: 30px;
+            margin: 5px;
+        }
+
+        .clear-cart {
+            background: #ff6600;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+            border-radius: 4px;
+        }
+
+        .lebutton {
+            padding: 10px 20px;
+            font-size: 14px;
+            background: #ff6600;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+            text-decoration: none;
+
+
+        }
+
+    </style>
+
+<script>
+    function displayCart() {
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        let cartItemsContainer = document.getElementById("cart-items");
+        let totalPrice = 0;
+
+        if (cart.length === 0) {
+            cartItemsContainer.innerHTML = "<p>Your cart is empty.</p>";
+            document.getElementById("total-price").innerText = "$0";
+            return;
+        }
+
+        cartItemsContainer.innerHTML = ""; // Clear previous content
+
+        cart.forEach((book, index) => {
+            let itemDiv = document.createElement("div");
+            itemDiv.classList.add("cart-item");
+            itemDiv.innerHTML = `
+                <img src="${book.image}" alt="${book.name}">
+                <span>${book.name} - $${book.price}</span>
+                <button onclick="removeFromCart(${index})">Remove</button>
+            `;
+            cartItemsContainer.appendChild(itemDiv);
+            totalPrice += parseFloat(book.price); // Add the book's price to the total
+        });
+
+        document.getElementById("total-price").innerText = `$${totalPrice.toFixed(2)}`;
+    }
+
+    function removeFromCart(index) {
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        cart.splice(index, 1); // Remove selected item
+        localStorage.setItem("cart", JSON.stringify(cart));
+        displayCart(); // Refresh cart display
+    }
+
+    function clearCart() {
+        localStorage.removeItem("cart");
+        displayCart();
+    }
+
+    document.addEventListener("DOMContentLoaded", displayCart);
+</script>
+
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="Books Page.html">Books</a></li>
+                <li><a href="19th Century Books Page.html">19th Century Books</a></li>
+                <li><a href="Cart Page 2.html">Cart (<span id="cart-count">0</span>)</a></li>
+                <li><a href="Contact Us Page.html">Contact Us</a></li>
+                <li><a href="About us.html">About Us</a></li>
+
+
+            </ul>
+        </nav>
+    </header>
+    
+
+    <section>
+        <p></p><br>
+        <p></p><br>
+        <p></p><br>
+        <p></p><br>
+    </section>
+
+
+
+    <section class="cart-section">
+
+        <body>
+            <div class="cart-container">
+                <div id="cart-items"></div>
+                <button class="clear-cart" onclick="clearCart()">Clear Cart</button>
+            </div>
+
+        <div class="checkout-box">
+            <h2>Checkout</h2>
+            <p>Total: <span id="total-price">$0</span></p>
+            <button class="checkout-btn">Proceed to Checkout</button>
+            <a href="Delivery Information.html" class="lebutton">Delivery Info</a>
+
+        </div>
+
+
+
+    </section>
+
+    <div>
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
+
+
+
+
+    <footer id="footer">
+        <p>&copy; 2025 Emblemy Collectible Books. All rights reserved.</p>
+        <div class="social-icons">
+            <img src="images\image.png" alt="Facebook Link">
+            <img src="images\image(1).png" alt="Instagram Link">
+            <img src="images\image(2).png" alt="Twitter Link">
+            <img src="images\image(3).png" alt="Whatsapp Link">
+        </div>
+    </footer>
+
+
+</body>
+</html>
